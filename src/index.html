@@ -1,0 +1,100 @@
+<!--
+@license
+Copyright IBM Corp. 2020
+This source code is licensed under the Apache-2.0 license found in the
+LICENSE file in the root directory of this source tree.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title id="app_title">Application TEST</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/carbon-components/css/carbon-components.min.css">
+    <script src="https://unpkg.com/carbon-components/scripts/carbon-components.min.js"></script>
+    <script type="module">
+      import 'https://1.www.s81c.com/common/carbon-for-ibm-dotcom/latest/ibmdotcom-web-components-dotcom-shell.min.js';
+      // The minimum prerequisite to properly set the current language/locale on the page
+      window.digitalData = {
+        page: {
+          pageInfo: {
+            language: 'en-US',
+            ibm: {
+              country: 'US',
+              siteID: 'IBMTESTWWW',
+            },
+          },
+          isDataLayerReady: true,
+        },
+      };
+    </script>
+    <style>
+      main {
+        margin: calc(3rem + 1px) auto 0 auto;
+        padding: var(--cds-spacing-09, 3rem);
+        /*padding: 5rem;*/
+        max-width: 99rem;
+      }
+      /* carbon color https://carbon-elements.netlify.app/colors/examples/preview/ */
+      .app--background-blue20 {
+        background-color: #d0e2ff;
+      }
+      .app--background-warmgray10 {
+        background-color: #f7f3f2;
+      }
+      /* carbon font and scale: https://www.carbondesignsystem.com/guidelines/typography/overview */
+      .app--type-mono-scale_4 {
+        font-size: 18px;
+        font-family: 'IBM Plex Mono';
+      }
+      .app--type-mono-scale_5 {
+        font-size: 20px;
+        font-family: 'IBM Plex Mono';
+      }
+      .app--type-scale_4 {
+        font-size: 18px;
+      }
+      .app--type-scale_5 {
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!--<dds-masthead-container id="masthead-container"></dds-masthead-container> -->
+    <dds-masthead>
+      <dds-masthead-menu-button></dds-masthead-menu-button>
+      <dds-masthead-logo></dds-masthead-logo>
+      <dds-top-nav menu-bar-label="IBM [Platform]" aria-label="IBM [Platform]">
+        <dds-top-nav-item role="link" href="index.html" title="Home"></dds-top-nav-item>
+        <dds-top-nav-item role="link" href="javascript:void(0);" title="About"></dds-top-nav-item>
+      </dds-top-nav>
+      <dds-left-nav-overlay></dds-left-nav-overlay>
+      <dds-left-nav menu-bar-label="IBM [Platform]">
+        <dds-left-nav-item role="link" href="index.html" title="Home"></dds-left-nav-item>
+        <dds-left-nav-item role="link" href="javascript:void(0);" title="About"></dds-left-nav-item>
+      </dds-left-nav>
+    </dds-masthead>
+    <main>
+      <div class="bx--grid">
+        <div class="bx--row">
+          <div class="bx--col">
+              <div><h1>Application Test - Go web server</h1></div>
+          </div>
+        </div>
+        <div class="bx--row bx--row-padding">
+          <div class="bx--col-sm-8 bx--col-md-8 bx--col-lg-6">
+              <div style="padding:2%;" class="app--background-warmgray10">
+                <span class="app--type-scale_5">Carbon design system</span><br />
+                <span class="app--type-mono-scale_4"><a href="https://www.carbondesignsystem.com/" target="_blank">Go to web site</a></span>
+              </div>
+          </div>
+          <div class="bx--col-sm-8 bx--col-md-8 bx--col-lg-6">
+            <div style="padding:2%" class="app--background-blue20 app--type-mono-scale_5">
+              Right column
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
