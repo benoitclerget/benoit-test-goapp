@@ -34,8 +34,14 @@ func main() {
 	if err != nil {
 		log.Println(err)
 	}
-	fmt.Println(path) // for example /home/user
-	http.Handle("/", http.StripPrefix("/", http.FileServer(http.Dir(path+"/html"))))
+	fmt.Println("Working dir: " + path) // for example /home/user
+	public := os.Getenv("OPENSHIFT_DATA_DIR")
+	fmt.Println("OPENSHIFT_DATA_DIR: " + public) // openshift data path
+	if public != "" {
+		http.Handle("/", http.StripPrefix("/", http.FileServer(http.Dir(public))))
+	} else {
+		http.Handle("/", http.StripPrefix("/", http.FileServer(http.Dir(path+"/html"))))
+	}
 	http.HandleFunc("/health", helloHandler)
 	port := os.Getenv("PORT")
 	if len(port) == 0 {
