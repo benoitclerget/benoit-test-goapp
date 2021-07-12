@@ -41,9 +41,9 @@ func main() {
 	home := os.Getenv("HOME")
 	fmt.Println("HOME: " + home)
 
-	http.Handle("/", http.StripPrefix("/", http.FileServer(http.Dir(path+"/data"))))
+	http.Handle("/data", http.StripPrefix("/", http.FileServer(http.Dir(path+"/data"))))
 
-	http.HandleFunc("/health", helloHandler)
+	http.HandleFunc("/", helloHandler)
 	port := os.Getenv("PORT")
 	if len(port) == 0 {
 		port = DefaultPort
