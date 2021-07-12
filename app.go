@@ -12,7 +12,7 @@ import (
 
 // Default http port
 const (
-	DefaultPort = "3000"
+	DefaultPort = "8080"
 )
 
 func main() {
