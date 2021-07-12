@@ -38,12 +38,10 @@ func main() {
 
 	public := os.Getenv("APP_ROOT")
 	fmt.Println("APP_ROOT: " + public)
-	public = os.Getenv("HOME")
-	fmt.Println("HOME: " + public)
+	home := os.Getenv("HOME")
+	fmt.Println("HOME: " + home)
 
-	http.Handle("/html", http.StripPrefix("/", http.FileServer(http.Dir(path+"/html"))))
-	http.Handle("/src", http.StripPrefix("/", http.FileServer(http.Dir(path+"/src"))))
-	http.Handle("/", http.StripPrefix("/", http.FileServer(http.Dir(path))))
+	http.Handle("/", http.StripPrefix("/", http.FileServer(http.Dir(path+"/data"))))
 
 	http.HandleFunc("/health", helloHandler)
 	port := os.Getenv("PORT")
