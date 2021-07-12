@@ -1,13 +1,10 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"os"
-
-	"github.com/gorilla/mux"
-	//for extracting service credentials from VCAP_SERVICES
-	//"github.com/cloudfoundry-community/go-cfenv"
 )
 
 // Default http port
@@ -15,26 +12,42 @@ const (
 	DefaultPort = "8080"
 )
 
-func main() {
-	var port string
-	if port = os.Getenv("PORT"); len(port) == 0 {
-		port = DefaultPort
+func helloHandler(w http.ResponseWriter, r *http.Request) {
+	response := os.Getenv("RESPONSE")
+	if len(response) == 0 {
+		response = "Hello OpenShift!"
 	}
-
-	router := mux.NewRouter().StrictSlash(true)
-
-	/*
-		app.get('/org.ibm.gdps/images/:flavorsvg', function (req, res) {
-			res.sendFile(path.join(__dirname, 'html/images/' + req.params.flavorsvg))
-		  })
-	*/
-	router.PathPrefix("/").Handler(http.StripPrefix("/", http.FileServer(http.Dir("html"))))
-
-	log.Printf("Starting app on port %+v\n", port)
-	//http.ListenAndServe(":"+port, nil)
-	log.Fatal(http.ListenAndServe(":"+port, router))
+	fmt.Fprintln(w, response)
+	fmt.Println("Servicing request /health")
 }
 
-// https://golang.org/pkg/net/http/
-//https://thenewstack.io/make-a-restful-json-api-go/
-//http://www.gorillatoolkit.org/pkg/mux
+func listenAndServe(port string) {
+	fmt.Printf("serving on %s\n", port)
+	err := http.ListenAndServe(":"+port, nil)
+	if err != nil {
+		panic("ListenAndServe: " + err.Error())
+	}
+}
+
+func main() {
+	http.Handle("/", http.StripPrefix("/", http.FileServer(http.Dir("html"))))
+	http.HandleFunc("/health", helloHandler)
+	port := os.Getenv("PORT")
+	if len(port) == 0 {
+		port = DefaultPort
+	}
+	log.Printf("Starting app on port %+v\n", port)
+
+	go listenAndServe(port)
+
+	/*
+		port = os.Getenv("SECOND_PORT")
+		if len(port) == 0 {
+			port = "8888"
+		}
+		go listenAndServe(port)
+	*/
+
+	select {}
+
+}
