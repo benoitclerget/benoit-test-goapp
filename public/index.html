@@ -57,7 +57,11 @@ LICENSE file in the root directory of this source tree.
       .app--type-scale_5 {
         font-size: 20px;
       }
+      .app--productive-heading-04 {
+        font-size: 28px;
+      }
     </style>
+    <script src="app_funcs.js"></script>
   </head>
   <body>
     <!--<dds-masthead-container id="masthead-container"></dds-masthead-container> -->
@@ -84,13 +88,14 @@ LICENSE file in the root directory of this source tree.
         <div class="bx--row bx--row-padding">
           <div class="bx--col-sm-8 bx--col-md-8 bx--col-lg-6">
               <div style="padding:2%;" class="app--background-warmgray10">
-                <span class="app--type-scale_5">Carbon design system</span><br />
-                <span class="app--type-mono-scale_4"><a href="https://www.carbondesignsystem.com/" target="_blank">Go to web site</a></span>
+                <div class="app--productive-heading-04">Web app informations</div>
+                <div class="app--type-mono-scale_4" id="app_webapp_infos">Some web app infos here</div>
               </div>
           </div>
           <div class="bx--col-sm-8 bx--col-md-8 bx--col-lg-6">
-            <div style="padding:2%" class="app--background-blue20 app--type-mono-scale_5">
-              Right column
+            <div style="padding:2%" class="app--background-blue20">
+              <div class="app--productive-heading-04">System informations</div>
+              <div class="app-type-mono-scale_4" id="app_system_infos">Some system infos here</div>
             </div>
           </div>
         </div>
