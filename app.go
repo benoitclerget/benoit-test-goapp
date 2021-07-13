@@ -41,7 +41,7 @@ func main() {
 	home := os.Getenv("HOME")
 	fmt.Println("HOME: " + home)
 
-	http.Handle("/data", http.StripPrefix("/", http.FileServer(http.Dir(path+"/data"))))
+	http.Handle("/public/", http.StripPrefix("/public/", http.FileServer(http.Dir(path+"/public"))))
 
 	http.HandleFunc("/", helloHandler)
 	port := os.Getenv("PORT")
